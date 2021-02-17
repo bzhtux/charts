@@ -637,7 +637,7 @@ queryFrontend:
   service:
     ## Service type
     ##
-    type: ClusterIP
+    type: LoadBalancer
     ## Thanos Query Frontend service clusterIP IP
     ##
     # clusterIP: None
