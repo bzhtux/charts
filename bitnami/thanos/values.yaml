@@ -2158,7 +2158,7 @@ minio:
   ## Set to true to deploy a MinIO(R) chart
   ## to be used as an objstore for Thanos
   ##
-  enabled: false
+  enabled: true
 
   ## MinIO(R) credentials
   ##
