@@ -313,7 +313,7 @@ prometheus:
   service:
     ## Kubernetes service type and port number
     ##
-    type: ClusterIP
+    type: LoadBalancer
     port: 9090
     # clusterIP: None
 
