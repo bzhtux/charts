@@ -777,7 +777,7 @@ prometheus:
       name: "custom-scrape-config"
       ## Name of the key inside the secret to be used for the additional scrape configuration.
       ##
-      key: "prometheus.yaml.gz"
+      key: "custom-scrape-config.yaml.gz"
     internal:
       jobList: []
 
