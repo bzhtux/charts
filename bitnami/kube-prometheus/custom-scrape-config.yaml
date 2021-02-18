@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+data:
+  prometheus.yaml.gz: H4sICMu8LmAAA3Byb21ldGhldXMueWFtbACtUs1OwzAMvvcpfJi0VqNIcAyHPcgYVpqarqxNIjuVeHzSjLIVdYghTlHs789OxLD2hMbZ17YRlZXw5iq0uicF6+NQEVsKJKV3tawzgHMJpT7TAEpg10VSBMYbU6cr6uYAcQMbwtQRBTvEnoLGC8lIRm2tCzq0zqJnFxEHGgRbh5Ki7qMUgDYjQMGRyKcCU0PvCgIP9B9eXofD3InJd9pQqgXNDYWTuIIkza2RxEK8zJPfb4oreXRdM4kg3sGt4RyH6+Em592L2m+KfKvUc70ptk/5eHwiEronGxSsHtTqcXGqr4BpgMkqtXs92/py/tMP+GED30njrxMfk/1280vcG15/5PzBaqJmH8eUxOg8AwAA
+kind: Secret
+metadata:
+  labels:
+    managed-by: prometheus-operator
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:prometheus.yaml.gz: {}
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:generated: {}
+        f:labels:
+          .: {}
+          f:managed-by: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"d5f76204-49e6-42b6-97d6-df92b3419492"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:type: {}
+    manager: operator
+    operation: Update
+    time: "2021-02-18T18:54:03Z"
+  name: custom-scrape-config
+  namespace: monitoring
+type: Opaque
