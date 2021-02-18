@@ -1,39 +1,25 @@
----
-apiVersion: v1
-data:
-  custom-scrape-config.yaml.gz: H4sICMu8LmAAA2N1c3RvbS1zY3JhcGUtY29uZmlnLnlhbWwArVLNTsMwDL73KXyYtFajSHAMhz3IGFaamq6sTSI7lXh80oyyFXWIIU5R7O/PTsSw9oTG2de2EZWV8OYqtLonBevjUBFbCiSld7WsM4BzCaU+0wBKYNdFUgTGG1OnK+rmAHEDG8LUEQU7xJ6CxgvJSEZtrQs6tM6iZxcRBxoEW4eSou6jFIA2I0DBkcinAlND7woCD/QfXl6Hw9yJyXfaUKoFzQ2Fk7iCJM2tkcRCvMyT32+KK3l0XTOJIN7BreEch+vhJufdi9pvinyr1HO9KbZP+Xh8IhK6JxsUrB7U6nFxqq+AaYDJKrV7Pdv6cv7TD/hhA99J468TH5P9dvNL3Btef+T8wWqiZh/HlMToPAMAAA==
-kind: Secret
-metadata:
-  labels:
-    managed-by: prometheus-operator
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:custom-scrape-config.yaml.gz: {}
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:generated: {}
-        f:labels:
-          .: {}
-          f:managed-by: {}
-        f:ownerReferences:
-          .: {}
-          k:{"uid":"d5f76204-49e6-42b6-97d6-df92b3419492"}:
-            .: {}
-            f:apiVersion: {}
-            f:blockOwnerDeletion: {}
-            f:controller: {}
-            f:kind: {}
-            f:name: {}
-            f:uid: {}
-      f:type: {}
-    manager: operator
-    operation: Update
-    time: "2021-02-18T18:54:03Z"
-  name: custom-scrape-config
-  namespace: monitoring
-type: Opaque
+scrape_configs:
+  - job_name: 'kubernetes-pods'
+    kubernetes_sd_configs:
+    - role: pod
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+      action: keep
+      regex: true
+    - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+      action: replace
+      target_label: __metrics_path__
+      regex: (.+)
+    - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+      action: replace
+      regex: ([^:]+)(?::\d+)?;(\d+)
+      replacement: $1:$2
+      target_label: __address__
+    - action: labelmap
+      regex: __meta_kubernetes_pod_label_(.+)
+    - source_labels: [__meta_kubernetes_namespace]
+      action: replace
+      target_label: kubernetes_namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: kubernetes_pod_name
