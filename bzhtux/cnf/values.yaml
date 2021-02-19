@@ -122,3 +122,7 @@ envVars:
       value: redis-service.cnf.svc.cluster.local
     - name: REDIS_PORT
       value: "6379"
+
+# REDIS internal
+redis:
+  enabled: true
