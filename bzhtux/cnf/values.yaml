@@ -113,3 +113,12 @@ cloudProvider:
   name: aws
   type: "gp2"
   reclaimPolicy: "Retain"
+
+# envVars: {}
+envVars:
+  enabled: true
+  vars:
+    - name: REDIS_HOST
+      value: redis-service.cnf.svc.cluster.local
+    - name: REDIS_PORT
+      value: "6379"
