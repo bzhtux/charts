@@ -168,7 +168,7 @@ operator:
     # Prometheus Operator service monitors
     serviceMonitor:
       # enable support for Prometheus Operator
-      enabled: false
+      enabled: true
       # Job label for scrape target
       jobLabel: app.kubernetes.io/name
       # Scrape interval. If not set, the Prometheus default scrape interval is used.
@@ -364,7 +364,7 @@ grafana:
   ##
   ##
   persistence:
-    enabled: false
+    enabled: true
     ## Grafana data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -372,7 +372,7 @@ grafana:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "slow"
     accessMode: ReadWriteOnce
     size: 10Gi
 
