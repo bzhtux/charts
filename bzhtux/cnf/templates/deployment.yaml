@@ -61,7 +61,7 @@ spec:
           env:
             {{- range .Values.envVars.vars }}
             - name: {{ .name }}
-              value: {{ .value }}
+              value: {{ .value | quote }}
             {{- end }}
           {{- end }}
       {{- with .Values.nodeSelector }}
