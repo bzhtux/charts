@@ -1541,7 +1541,7 @@ ruler:
   ## Alermanager URLs array
   ##
   alertmanagers:
-    - http://kube-prometheus-alertmanager.{{ .Release.Namespace }}.svc.cluster.local:9093
+    - "http://kube-prometheus-alertmanager.{{ .Release.Namespace }}.svc.cluster.local:9093"
 
   ## The default evaluation interval to use
   ##
