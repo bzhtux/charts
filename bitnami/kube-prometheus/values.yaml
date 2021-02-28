@@ -552,7 +552,7 @@ prometheus:
   # externalLabels: {}
   externalLabels:
     release: {{ .Release.Name }}
-    dc: ""
+    dc: cloud
     
 
   ## Name of the external label used to denote replica name
