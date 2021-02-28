@@ -26,7 +26,7 @@ spec:
             pathType: {{ .Values.prometheus.ingress.pathType }}
             {{- end }}
             backend: {{- include "common.ingress.backend" (dict "serviceName" (include "kube-prometheus.prometheus.fullname" $) "servicePort" "http" "context" $)  | nindent 14 }}
-    {{- else -}}
+    {{- else }}
     - host: prom-{{ .Values.dc }}
       http:
         paths:
