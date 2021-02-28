@@ -44,7 +44,14 @@ clusterDomain: cluster.local
 ## Objstore Configuration
 ## Specify content for objstore.yml
 ##
-# objstoreConfig:
+objstoreConfig: |-
+  type: s3
+  config:
+    bucket: thanos
+    endpoint: {{ include "thanos.minio.fullname" . }}.monitoring.svc.cluster.local:9000
+    access_key: minio
+    secret_key: minio123
+    insecure: true
 
 ## Index cache Configuration
 ## Specify content for index-cache.yml
@@ -99,6 +106,8 @@ query:
   ##
   dnsDiscovery:
     enabled: true
+    sidecarsService: kube-prometheus-prometheus-thanos
+    sidecarsNamespace: monitoring
     ## Sidecars service name to discover them using DNS discovery
     ## Evaluated as a template.
     # sidecarsService: "{{ .Release.Name }}-prometheus-thanos"
@@ -1021,7 +1030,7 @@ bucketweb:
 compactor:
   ## Set to true to enable Thanos Compactor component
   ##
-  enabled: false
+  enabled: true
 
   ## Log level
   ##
@@ -1226,7 +1235,7 @@ compactor:
 storegateway:
   ## Set to true to enable Thanos Store Gateway component
   ##
-  enabled: false
+  enabled: true
 
   ## Log level
   ##
@@ -1501,7 +1510,7 @@ storegateway:
 ruler:
   ## Set to true to enable Thanos Ruler component
   ##
-  enabled: false
+  enabled: true
 
   ## Log level
   ##
@@ -1531,7 +1540,8 @@ ruler:
 
   ## Alermanager URLs array
   ##
-  alertmanagers: []
+  alertmanagers:
+    - http://kube-prometheus-alertmanager.monitoring.svc.cluster.local:9093
 
   ## The default evaluation interval to use
   ##
@@ -1548,7 +1558,12 @@ ruler:
   ## Ruler Configuration
   ## Specify content for ruler.yml
   ##
-  # config:
+  config: |-
+      groups:
+      - name: "metamonitoring"
+        rules:
+          - alert: "PrometheusDown"
+            expr: absent(up{prometheus="monitoring/kube-prometheus"})
 
   ## ConfigMap with Ruler Configuration
   ## NOTE: This will override ruler.config
@@ -2108,12 +2123,12 @@ receive:
 ## Prometheus metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
 
   ## Prometheus Operator ServiceMonitor configuration
   ##
   serviceMonitor:
-    enabled: false
+    enabled: true
     ## Namespace in which Prometheus is running
     ##
     # namespace: monitoring
@@ -2163,9 +2178,9 @@ minio:
   ## MinIO(R) credentials
   ##
   accessKey:
-    password: ''
+    password: 'minio'
   secretKey:
-    password: ''
+    password: 'minio123'
 
   ## Default MinIO(R) buckets
   ##
