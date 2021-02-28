@@ -48,7 +48,7 @@ objstoreConfig: |-
   type: s3
   config:
     bucket: thanos
-    endpoint: {{ include "thanos.minio.fullname" . }}.monitoring.svc.cluster.local:9000
+    endpoint: {{ include "thanos.minio.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:9000
     access_key: minio
     secret_key: minio123
     insecure: true
@@ -107,7 +107,7 @@ query:
   dnsDiscovery:
     enabled: true
     sidecarsService: kube-prometheus-prometheus-thanos
-    sidecarsNamespace: monitoring
+    sidecarsNamespace: "{{ .Release.Namespace }}"
     ## Sidecars service name to discover them using DNS discovery
     ## Evaluated as a template.
     # sidecarsService: "{{ .Release.Name }}-prometheus-thanos"
@@ -1541,7 +1541,7 @@ ruler:
   ## Alermanager URLs array
   ##
   alertmanagers:
-    - http://kube-prometheus-alertmanager.monitoring.svc.cluster.local:9093
+    - http://kube-prometheus-alertmanager.{{ .Release.Namespace }}.svc.cluster.local:9093
 
   ## The default evaluation interval to use
   ##
@@ -1563,7 +1563,7 @@ ruler:
       - name: "metamonitoring"
         rules:
           - alert: "PrometheusDown"
-            expr: absent(up{prometheus="monitoring/kube-prometheus"})
+            expr: absent(up{prometheus="{{ .Release.Namespace }}/kube-prometheus"})
 
   ## ConfigMap with Ruler Configuration
   ## NOTE: This will override ruler.config
