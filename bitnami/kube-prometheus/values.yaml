@@ -549,7 +549,11 @@ prometheus:
 
   ## External labels to add to any time series or alerts when communicating with external systems
   ##
-  externalLabels: {}
+  # externalLabels: {}
+  externalLabels:
+    release: {{ .Release.Name }}
+    dc: ""
+    
 
   ## Name of the external label used to denote replica name
   ##
