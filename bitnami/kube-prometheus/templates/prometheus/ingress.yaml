@@ -26,6 +26,18 @@ spec:
             pathType: {{ .Values.prometheus.ingress.pathType }}
             {{- end }}
             backend: {{- include "common.ingress.backend" (dict "serviceName" (include "kube-prometheus.prometheus.fullname" $) "servicePort" "http" "context" $)  | nindent 14 }}
+    {{- else -}}
+    - host: prom-{{ .Values.dc }}
+      http:
+        paths:
+          {{- if .Values.prometheus.ingress.extraPaths }}
+          {{- toYaml .Values.prometheus.ingress.extraPaths | nindent 10 }}
+          {{- end }}
+          - path: {{ .Values.prometheus.ingress.path }}
+            {{- if eq "true" (include "common.ingress.supportsPathType" .) }}
+            pathType: {{ .Values.prometheus.ingress.pathType }}
+            {{- end }}
+            backend: {{- include "common.ingress.backend" (dict "serviceName" (include "kube-prometheus.prometheus.fullname" $) "servicePort" "http" "context" $)  | nindent 14 }}
     {{- end }}
     {{- range .Values.prometheus.ingress.extraHosts }}
     - host: {{ .name | quote }}

@@ -402,7 +402,7 @@ prometheus:
     ## When the ingress is enabled, a host pointing to this will be created
     ##
     # hostname: prometheus.local
-    hostname: prom-{{ .Value.dc }}.pivotal.bzhtux-lab.net
+    hostname: ""
 
     ## The Path to Prometheus. You may need to set this to '/*' in order to use this
     ## with ALB ingress controllers.
