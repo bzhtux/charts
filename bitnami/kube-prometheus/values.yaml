@@ -551,7 +551,7 @@ prometheus:
   ##
   # externalLabels: {}
   externalLabels:
-    release: {{ .Release.Name }}
+    release: "{{ .Release.Name }}"
     dc: cloud
     
 
