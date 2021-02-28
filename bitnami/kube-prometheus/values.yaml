@@ -18,6 +18,9 @@ global:
 ## String to fully override prometheus.fullname template
 ##
 # fullnameOverride:
+  
+## DC for ingress hostname, ex aws1, aws2 or gke ...
+dc: ""
 
 ## Role Based Access
 ## ref: https://kubernetes.io/docs/admin/authorization/rbac/
@@ -394,9 +397,12 @@ prometheus:
     ##
     apiVersion: ""
 
+
+
     ## When the ingress is enabled, a host pointing to this will be created
     ##
-    hostname: prometheus.local
+    # hostname: prometheus.local
+    hostname: prom-{{ .Value.dc }}.pivotal.bzhtux-lab.net
 
     ## The Path to Prometheus. You may need to set this to '/*' in order to use this
     ## with ALB ingress controllers.
