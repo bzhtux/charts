@@ -643,7 +643,7 @@ prometheus:
   ## See https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ## ref: https://prometheus.io/docs/prometheus/latest/storage/#compaction
   ##
-  disableCompaction: false
+  disableCompaction: true
 
   ## Enable compression of the write-ahead log using Snappy.
   ##
