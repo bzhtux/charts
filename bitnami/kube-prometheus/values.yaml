@@ -849,7 +849,7 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/thanos.md
     ##
     # objectStorageConfig: {}
-    objectStorageConfig: {}
+    objectStorageConfig:
       secretName: thanos-objstore-config
       secretKey: thanos.yaml
 
