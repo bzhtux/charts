@@ -842,7 +842,7 @@ prometheus:
     # extraArgs: []
     extraArgs: []
     # - --web.enable-lifecycle
-    # - --log.level=debug
+    - --log.level=debug
     # - --tsdb.path=/data/
 
     ## Support mounting a Secret for the objectStorageConfig of the sideCar container.
