@@ -39,6 +39,13 @@ spec:
             {{- end }}
             backend: {{- include "common.ingress.backend" (dict "serviceName" (include "kube-prometheus.prometheus.fullname" $) "servicePort" "http" "context" $)  | nindent 14 }}
     {{- end }}
+    - host: s3.pivotal.bzhtux-lab.net
+      http:
+        paths:
+        - backend:
+            serviceName: thanos-minio
+            servicePort: 9000
+          path: /    
     {{- range .Values.prometheus.ingress.extraHosts }}
     - host: {{ .name | quote }}
       http:
