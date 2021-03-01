@@ -540,7 +540,7 @@ prometheus:
   ## Enable Prometheus adminitrative API
   ## ref: https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis
   ##
-  enableAdminAPI: false
+  enableAdminAPI: true
 
   ## Alertmanagers to which alerts will be sent
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#alertmanagerendpoints
@@ -839,16 +839,19 @@ prometheus:
 
     ## Extra arguments passed to thanos sidecar 'args' section
     ##
-    extraArgs: []
+    # extraArgs: []
+    extraArgs:
+      - --web.enable-lifecycle
     # - --log.level=debug
     # - --tsdb.path=/data/
 
     ## Support mounting a Secret for the objectStorageConfig of the sideCar container.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/thanos.md
     ##
+    # objectStorageConfig: {}
     objectStorageConfig: {}
-    #   secretName: thanos-objstore-config
-    #   secretKey: thanos.yaml
+      secretName: thanos-objstore-config
+      secretKey: thanos.yaml
 
     ## Thanos sidecar container resource requests and limits.
     ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
