@@ -840,7 +840,7 @@ prometheus:
     ## Extra arguments passed to thanos sidecar 'args' section
     ##
     # extraArgs: []
-    extraArgs:
+    extraArgs: []
     # - --web.enable-lifecycle
     # - --log.level=debug
     # - --tsdb.path=/data/
