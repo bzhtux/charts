@@ -372,7 +372,7 @@ grafana:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "standard"
+    # storageClass: "standard"
     accessMode: ReadWriteOnce
     size: 10Gi
 
