@@ -840,9 +840,9 @@ prometheus:
     ## Extra arguments passed to thanos sidecar 'args' section
     ##
     # extraArgs: []
-    extraArgs: []
+    extraArgs:
+    - --log.level=debug      
     # - --web.enable-lifecycle
-    - --log.level=debug
     # - --tsdb.path=/data/
 
     ## Support mounting a Secret for the objectStorageConfig of the sideCar container.
