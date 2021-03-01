@@ -210,7 +210,7 @@ spec:
       imagePullPolicy: {{ .Values.prometheus.thanos.image.pullPolicy }}
       args:
         - sidecar
-        - --prometheus.url=http://0.0.0.0:9090
+        - --prometheus.url=http://prometheus-{{ .Values.dc }}-kube-prome-prometheus:9090
         - --grpc-address=0.0.0.0:10901
         - --http-address=0.0.0.0:10902
         - --tsdb.path=/prometheus/
