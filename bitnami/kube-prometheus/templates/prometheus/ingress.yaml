@@ -44,7 +44,7 @@ spec:
         paths:
         - backend:
             serviceName: thanos-minio
-            servicePort: 9000
+            servicePort: http
           path: /    
     {{- range .Values.prometheus.ingress.extraHosts }}
     - host: {{ .name | quote }}
