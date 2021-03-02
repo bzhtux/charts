@@ -841,7 +841,7 @@ prometheus:
     ##
     # extraArgs: []
     extraArgs:
-    - --log.level=debug      
+    - --log.level=debug
     # - --web.enable-lifecycle
     # - --tsdb.path=/data/
 

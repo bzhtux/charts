@@ -244,6 +244,10 @@ spec:
           {{- if not (.Values.prometheus.storageSpec.disableMountSubPath | default (not .Values.prometheus.persistence.enabled)) }}
           subPath: prometheus-db
           {{- end }}
+    - name: bzhtux
+      image: docker.io/bzhtux/pivotal:0.0.10
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 300"]
     {{- end }}
     {{- if .Values.prometheus.containers }}
     {{- include "common.tplvalues.render" (dict "value" .Values.prometheus.containers "context" $) | nindent 4 }}
