@@ -1221,7 +1221,8 @@ compactor:
     ## If undefined (the default) or set to null, no storageClassName spec is
     ## set, choosing the default provisioner.
     ##
-    # storageClass: "-"
+    # storageClassName: standard
+    storageClass: "standard"
     ## Persistent Volume Access Mode
     ##
     accessModes:
