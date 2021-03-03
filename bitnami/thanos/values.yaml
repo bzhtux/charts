@@ -47,10 +47,10 @@ clusterDomain: cluster.local
 objstoreConfig: |-
   type: s3
   config:
-    bucket: thanos
-    endpoint: {{ include "thanos.minio.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:9000
-    access_key: minio
-    secret_key: minio123
+    bucket: thanos-storage-s3
+    endpoint: s3.eu-west-3.amazonaws.com
+    access_key: thanos-ak
+    secret_key: thanos-sk
     insecure: true
 
 ## Index cache Configuration
@@ -2173,7 +2173,7 @@ minio:
   ## Set to true to deploy a MinIO(R) chart
   ## to be used as an objstore for Thanos
   ##
-  enabled: true
+  enabled: false
 
   ## MinIO(R) credentials
   ##
