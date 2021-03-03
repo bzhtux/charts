@@ -44,7 +44,7 @@ clusterDomain: cluster.local
 ## Objstore Configuration
 ## Specify content for objstore.yml
 ##
-objstoreConfig: |-
+objstoreConfig:
   type: s3
   config:
     bucket: thanos-storage-s3
