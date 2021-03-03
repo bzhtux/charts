@@ -140,7 +140,7 @@ query:
 
   ## StrategyType, can be set to RollingUpdate or Recreate by default.
   ##
-  strategyType: RollingUpdate
+  strategyType: Recreate
 
   ## Thanos Query pod affinity preset
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity
