@@ -18,7 +18,7 @@ global:
 ## String to fully override prometheus.fullname template
 ##
 # fullnameOverride:
-  
+
 ## DC for ingress hostname, ex aws1, aws2 or gke ...
 dc: ""
 
@@ -397,8 +397,6 @@ prometheus:
     ##
     apiVersion: ""
 
-
-
     ## When the ingress is enabled, a host pointing to this will be created
     ##
     # hostname: prometheus.local
@@ -553,7 +551,7 @@ prometheus:
   externalLabels:
     release: "{{ .Release.Name }}"
     dc: cloud
-    
+
 
   ## Name of the external label used to denote replica name
   ##
@@ -841,7 +839,7 @@ prometheus:
     ##
     # extraArgs: []
     extraArgs:
-    - --log.level=debug
+      - --log.level=debug
     # - --web.enable-lifecycle
     # - --tsdb.path=/data/
 
