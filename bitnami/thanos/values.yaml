@@ -66,12 +66,12 @@ clusterDomain: cluster.local
 ## Secret with Objstore Configuration
 ## Note: This will override objstoreConfig
 ##
-# existingObjstoreSecret:
+existingObjstoreSecret: thanos-objectstore-config
 ##  optional item list for specifying a custom Secret key. If so, path should be objstore.yml
 # existingObjstoreSecretItems: []
-existingObjstoreSecretItems:
-  - key: objstore.yml
-    path: objstore.yml
+# existingObjstoreSecretItems:
+#   - key: objstore.yml
+#     path: objstore.yml
 
 ## Provide a common service account to be shared with all components
 ##
