@@ -848,7 +848,7 @@ prometheus:
     ##
     # objectStorageConfig: {}
     objectStorageConfig:
-      secretName: thanos-objstore-config
+      secretName: thanos-objectstore-config
       secretKey: objstore.yml
 
     ## Thanos sidecar container resource requests and limits.
