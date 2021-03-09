@@ -107,10 +107,10 @@ query:
 
   ## Dynamically configure store APIs using DNS discovery
   ##
-  dnsDiscovery:
-    enabled: true
-    sidecarsService: prometheus-gke-kube-promet-prometheus-thanos
-    sidecarsNamespace: "{{ .Release.Namespace }}"
+  # dnsDiscovery:
+  #   enabled: true
+  #   sidecarsService: prometheus-gke-kube-promet-prometheus-thanos
+  #   sidecarsNamespace: "{{ .Release.Namespace }}"
     ## Sidecars service name to discover them using DNS discovery
     ## Evaluated as a template.
     # sidecarsService: "{{ .Release.Name }}-prometheus-thanos"
@@ -121,7 +121,9 @@ query:
 
   ## Statically configure store APIs to connect with Thanos Query
   ##
-  stores: []
+  stores:
+    - ab9756204de474827b9244b2609df89b-1899176272.eu-west-3.elb.amazonaws.com:10901
+    - prometheus-gke-kube-promet-prometheus-thanos.monitoring.svc.cluster.local:10901
 
   ## Query Service Discovery Configuration
   ## Specify content for servicediscovery.yml
