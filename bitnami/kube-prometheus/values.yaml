@@ -873,7 +873,7 @@ prometheus:
       ## Kubernetes service type and port number
       ##
       type: LoadBalancer
-      # port: 10901
+      port: 10901
       ## Use a "headless" service by default so it returns every pod's IP
       ## instead of loadbalancing requests.
       ##
