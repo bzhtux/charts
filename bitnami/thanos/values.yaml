@@ -107,8 +107,8 @@ query:
 
   ## Dynamically configure store APIs using DNS discovery
   ##
-  # dnsDiscovery:
-  #   enabled: true
+  dnsDiscovery:
+    enabled: false
   #   sidecarsService: prometheus-gke-kube-promet-prometheus-thanos
   #   sidecarsNamespace: "{{ .Release.Namespace }}"
     ## Sidecars service name to discover them using DNS discovery
