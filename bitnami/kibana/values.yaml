@@ -446,6 +446,6 @@ metrics:
 elasticsearch:
   tls: false
   hosts:
-  # - elasticsearch-1
+  - es-aws2-elasticsearch-master
   # - elasticsearch-2
-  port:
+  port: 9200
