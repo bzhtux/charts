@@ -275,7 +275,7 @@ readinessProbe:
 service:
   ## Service type
   ##
-  type: ClusterIP
+  type: LoadBalancer
   ## Logstash svc ports
   ##
   ports:
