@@ -66,20 +66,24 @@ monitoringAPIPort: 9600
 ##  - name: ELASTICSEARCH_HOST
 ##    value: "x.y.z"
 ##
-# extraEnvVars:
+extraEnvVars:
+  - name: ELASTICSEARCH_HOST
+    value: es-aws2-elasticsearch-master
+  - name: ELASTICSEARCH_PORT
+    value: 9200
 
 ## Input Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
 ##
 input: |-
-  # udp {
-  #   port => 1514
-  #   type => syslog
-  # }
-  # tcp {
-  #   port => 1514
-  #   type => syslog
-  # }
+  udp {
+    port => 1514
+    type => syslog
+  }
+  tcp {
+    port => 1514
+    type => syslog
+  }
   http { port => 8080 }
 ## Filter Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
@@ -95,11 +99,11 @@ input: |-
 ## ref: https://www.elastic.co/guide/en/logstash/current/output-plugins.html
 ##
 output: |-
-  # elasticsearch {
-  #   hosts => ["${ELASTICSEARCH_HOST}:${ELASTICSEARCH_PORT}"]
-  #   manage_template => false
-  #   index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
-  # }
+  elasticsearch {
+    hosts => ["${ELASTICSEARCH_HOST}:${ELASTICSEARCH_PORT}"]
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+  }
   # gelf {
   #   host => "${GRAYLOG_HOST}"
   #   port => ${GRAYLOG_PORT}
