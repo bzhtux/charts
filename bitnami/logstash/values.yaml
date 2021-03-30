@@ -312,7 +312,7 @@ service:
 ingress:
   ## Set to true to enable ingress record generation
   ##
-  enabled: true
+  enabled: false
 
   ## Set this to true in order to add the corresponding annotations for cert-manager
   ##
@@ -474,10 +474,10 @@ metrics:
   service:
     ## Service type
     ##
-    type: ClusterIP
+    type: LoadBalancer
     ## Logstash Prometheus port
     ##
-    port: 9198
+    # port: 9198
     ## Specify the nodePort value for the LoadBalancer and NodePort service types.
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
     ##
