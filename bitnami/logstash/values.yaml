@@ -279,14 +279,14 @@ service:
   ## Logstash svc ports
   ##
   ports:
-    # syslog-udp:
-    #   port: 1514
-    #   targetPort: syslog-udp
-    #   protocol: UDP
-    # syslog-tcp:
-    #   port: 1514
-    #   targetPort: syslog-tcp
-    #   protocol: TCP
+    syslog-udp:
+      port: 1514
+      targetPort: syslog-udp
+      protocol: UDP
+    syslog-tcp:
+      port: 1514
+      targetPort: syslog-tcp
+      protocol: TCP
     http:
       port: 8080
       targetPort: http
@@ -333,7 +333,7 @@ ingress:
   ## The Path to Logstash. You may need to set this to '/*' in order to use this
   ## with ALB ingress controllers.
   ##
-  path: /
+  path: /*
 
   ## Ingress annotations done as key:value pairs
   ## For a full list of possible ingress annotations, please see
