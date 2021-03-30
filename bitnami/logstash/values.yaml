@@ -497,10 +497,10 @@ metrics:
     # clusterIP: None
     ## Annotations for the Prometheus metrics service
     ##
-    annotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "9198"
-      prometheus.io/path: "/metrics"
+    # annotations:
+    #   prometheus.io/scrape: "true"
+    #   prometheus.io/port: "9198"
+    #   prometheus.io/path: "/metrics"
 
 ## Pod disruption budget configuration
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
