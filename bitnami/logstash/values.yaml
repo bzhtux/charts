@@ -289,7 +289,7 @@ service:
     #   protocol: UDP
     syslog-tcp:
       port: 1514
-      targetPort: syslog-tcp
+      targetPort: 9600
       protocol: TCP
     # http:
     #   port: 8080
