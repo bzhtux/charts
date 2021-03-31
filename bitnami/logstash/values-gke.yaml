@@ -117,7 +117,7 @@ output: |-
 ## Allows user to use multiple pipelines
 ## ref: https://www.elastic.co/guide/en/logstash/master/multiple-pipelines.html
 ##
-enableMultiplePipelines: true
+enableMultiplePipelines: false
 
 ## Array to add extra volumes (evaluated as a template)
 ## extraVolumes:
