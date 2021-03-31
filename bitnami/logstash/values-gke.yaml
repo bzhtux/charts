@@ -68,9 +68,9 @@ monitoringAPIPort: 9600
 ##
 extraEnvVars:
   - name: ELASTICSEARCH_HOST
-    value: "es-gke-elasticsearch-master"
+    value: "es-gke-elasticsearch-data"
   - name: ELASTICSEARCH_PORT
-    value: "9300"
+    value: "9200"
 
 ## Input Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
