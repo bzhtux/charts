@@ -76,13 +76,13 @@ extraEnvVars:
 ## ref: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
 ##
 input: |-
-  udp {
+  tcp {
     port => 1514
     type => syslog
     codec => json_lines { charset => CP1252 }
     tags => [ "tcpjson" ]
   }
-  # tcp {
+  # udp {
   #   port => 1514
   #   type => syslog
   # }
@@ -283,8 +283,8 @@ service:
   ports:
     syslog-udp:
       port: 1514
-      targetPort: syslog-udp
-      protocol: UDP
+      targetPort: syslog-tcp
+      protocol: TCP
     # syslog-tcp:
     #   port: 1514
     #   targetPort: syslog-tcp
