@@ -289,12 +289,16 @@ service:
     #   protocol: UDP
     syslog-tcp:
       port: 1514
-      targetPort: 9600
+      targetPort: syslog-tcp
       protocol: TCP
-    # http:
-    #   port: 8080
-    #   targetPort: http
-    #   protocol: TCP
+    http:
+      port: 8080
+      targetPort: http
+      protocol: TCP
+    monitoring:
+      port: 9600
+      targetPort: monitoring
+      protocol: TCP
   # loadBalancerIP:
   ## Load Balancer sources
   ## https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
