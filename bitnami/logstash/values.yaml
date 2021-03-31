@@ -76,15 +76,15 @@ extraEnvVars:
 ## ref: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
 ##
 input: |-
-  udp {
-    port => 1514
-    type => syslog
-  }
+  # udp {
+  #   port => 1514
+  #   type => syslog
+  # }
   tcp {
     port => 1514
     type => syslog
   }
-  http { port => 8080 }
+  # http { port => 8080 }
 ## Filter Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
 ##
@@ -145,9 +145,9 @@ containerPorts:
   # - name: syslog-udp
   #   containerPort: 1514
   #   protocol: UDP
-  # - name: syslog-tcp
-  #   containerPort: 1514
-  #   protocol: TCP
+  - name: syslog-tcp
+    containerPort: 1514
+    protocol: TCP
   - name: http
     containerPort: 8080
     protocol: TCP
@@ -283,14 +283,14 @@ service:
   ## Logstash svc ports
   ##
   ports:
-    syslog-udp:
-      port: 1514
-      targetPort: syslog-udp
-      protocol: UDP
-    # syslog-tcp:
+    # syslog-udp:
     #   port: 1514
-    #   targetPort: syslog-tcp
-    #   protocol: TCP
+    #   targetPort: syslog-udp
+    #   protocol: UDP
+    syslog-tcp:
+      port: 1514
+      targetPort: syslog-tcp
+      protocol: TCP
     # http:
     #   port: 8080
     #   targetPort: http
