@@ -68,7 +68,7 @@ monitoringAPIPort: 9600
 ##
 extraEnvVars:
   - name: ELASTICSEARCH_HOST
-    value: "es-gke-elasticsearch-data"
+    value: "es-gke-elasticsearch-master"
   - name: ELASTICSEARCH_PORT
     value: "9200"
 
@@ -88,13 +88,13 @@ input: |-
 ## Filter Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
 ##
-# filter: |-
-#   grok {
-#     match => { "message" => "%{COMBINEDAPACHELOG}" }
-#   }
-#   date {
-#     match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
-#   }
+filter: |-
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
 ## Output Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/output-plugins.html
 ##
