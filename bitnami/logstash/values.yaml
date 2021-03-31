@@ -55,7 +55,7 @@ clusterDomain: cluster.local
 configFileName: logstash.conf
 ## Whether to enable the Logstash Monitoring API or not  Kubernetes cluster domain
 ##
-enableMonitoringAPI: true
+enableMonitoringAPI: false
 ## Logstash Monitoring API Port
 ##
 monitoringAPIPort: 9600
@@ -142,9 +142,9 @@ extraVolumes: []
 extraVolumeMounts: []
 
 containerPorts:
-  # - name: syslog-udp
-  #   containerPort: 1514
-  #   protocol: UDP
+  - name: syslog-udp
+    containerPort: 1514
+    protocol: UDP
   - name: syslog-tcp
     containerPort: 1514
     protocol: TCP
@@ -283,10 +283,10 @@ service:
   ## Logstash svc ports
   ##
   ports:
-    # syslog-udp:
-    #   port: 1514
-    #   targetPort: syslog-udp
-    #   protocol: UDP
+    syslog-udp:
+      port: 1514
+      targetPort: syslog-udp
+      protocol: UDP
     syslog-tcp:
       port: 1514
       targetPort: syslog-tcp
