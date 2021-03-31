@@ -70,7 +70,7 @@ extraEnvVars:
   - name: ELASTICSEARCH_HOST
     value: "es-gke-elasticsearch-master"
   - name: ELASTICSEARCH_PORT
-    value: "9200"
+    value: "9300"
 
 ## Input Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
