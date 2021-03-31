@@ -448,4 +448,4 @@ elasticsearch:
   hosts:
   - es-aws2-elasticsearch-master
   # - elasticsearch-2
-  port: 9300
+  port: 9200
