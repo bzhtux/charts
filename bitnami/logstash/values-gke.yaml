@@ -68,7 +68,7 @@ monitoringAPIPort: 9600
 ##
 extraEnvVars:
   - name: ELASTICSEARCH_HOST
-    value: "es-aws2-elasticsearch-master"
+    value: "es-gke-elasticsearch-master"
   - name: ELASTICSEARCH_PORT
     value: "9200"
 
