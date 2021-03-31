@@ -270,18 +270,10 @@ service:
   ## Logstash svc ports
   ##
   ports:
-    # syslog-udp:
-    #   port: 1514
-    #   targetPort: syslog-udp
-    #   protocol: UDP
     syslog-tcp:
       port: 1514
       targetPort: syslog-tcp
       protocol: TCP
-    # http:
-    #   port: 8080
-    #   targetPort: http
-    #   protocol: TCP
     monitoring:
       port: 9600
       targetPort: monitoring
