@@ -79,8 +79,6 @@ input: |-
   tcp {
     port => 1514
     type => syslog
-    codec => json_lines { charset => CP1252 }
-    tags => [ "tcpjson" ]
   }
   # udp {
   #   port => 1514
