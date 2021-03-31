@@ -136,10 +136,10 @@ extraVolumeMounts: []
 
 containerPorts:
   - name: syslog-tcp
-    containerPort: 1514
+    targetPort: 1514
     protocol: TCP
   - name: monitoring
-    containerPort: 9600
+    targetPort: 9600
     protocol: TCP
 
 ## Number of Logstash replicas to deploy
