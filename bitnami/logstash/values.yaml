@@ -95,6 +95,10 @@ input: |-
 #   date {
 #     match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
 #   }
+filter: |-
+  grok {
+        match => { "message" => "%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}" }
+  }
 ## Output Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/output-plugins.html
 ##
