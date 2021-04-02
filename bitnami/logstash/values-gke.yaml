@@ -88,10 +88,18 @@ input: |-
 ## Filter Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
 ##
+## Syslog: { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp}
+## %{SYSLOGHOST:syslog_hostname}
+## %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?:
+## %{GREEDYDATA:syslog_message}" }
 filter: |-
   grok {
-        match => { "message" => "%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}" }
+        match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp}%{SYSLOGHOST:syslog_hostname}%{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?:%{GREEDYDATA:syslog_message}" }
   }
+
+  #  grok {
+  #       match => { "message" => "%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}" }
+  # }
 ## Output Plugins configuration
 ## ref: https://www.elastic.co/guide/en/logstash/current/output-plugins.html
 ##
