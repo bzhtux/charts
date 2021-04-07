@@ -94,7 +94,7 @@ input: |-
 ## %{GREEDYDATA:syslog_message}" }
 filter: |-
   grok {
-        match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp}%{SYSLOGHOST:syslog_hostname}%{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?:%{GREEDYDATA:syslog_message}" }
+        match => { "message" => "%{TIMESTAMP_ISO8601:time} (?<k8s-cluster>[0-9a-z-]*) (?<k8s-pod>[0-9a-z-]*) (?<k8s-deployment>[0-9a-z-]*) %{GREEDYDATA:logMessage}" }
   }
 
   #  grok {
